@@ -1,7 +1,7 @@
 version: "3.1"
 
 stories:
-  # Scenario: Greeting followed by asking for movie showtimes
+  # Basic conversation flows
   - story: greet and ask for movie showtimes
     steps:
       - intent: greet
@@ -16,7 +16,7 @@ stories:
       - action: action_ask_movie_showtimes
       - action: utter_ask_another_question
 
-  # Scenario: Asking for movie cast
+  # Movie information flows
   - story: ask for movie cast
     steps:
       - intent: ask_movie_cast
@@ -27,7 +27,6 @@ stories:
       - action: action_ask_movie_cast
       - action: utter_ask_another_question
 
-  # Scenario: Asking for movie director
   - story: ask for movie director
     steps:
       - intent: ask_movie_director
@@ -38,7 +37,6 @@ stories:
       - action: action_ask_movie_director
       - action: utter_ask_another_question
 
-  # Scenario: Asking for movie rating
   - story: ask for movie rating
     steps:
       - intent: ask_movie_rating
@@ -47,6 +45,159 @@ stories:
       - slot_was_set:
           - movie_name
       - action: action_ask_movie_rating
+      - action: utter_ask_another_question
+
+  # Complex conversation flows
+  - story: ask cast then rating
+    steps:
+      - intent: ask_movie_cast
+        entities:
+          - movie_name: "Inception"
+      - slot_was_set:
+          - movie_name: "Inception"
+      - action: action_ask_movie_cast
+      - action: utter_ask_another_question
+      - intent: ask_movie_rating
+        entities:
+          - movie_name: "Inception"
+      - slot_was_set:
+          - movie_name: "Inception"
+      - action: action_ask_movie_rating
+      - action: utter_ask_another_question
+
+  - story: ask duration then subtitles then goodbye
+    steps:
+      - intent: ask_movie_duration
+        entities:
+          - movie_name: "The Matrix"
+      - slot_was_set:
+          - movie_name: "The Matrix"
+      - action: action_ask_movie_duration
+      - action: utter_ask_another_question
+      - intent: ask_movie_subtitles
+        entities:
+          - movie_name: "The Matrix"
+      - slot_was_set:
+          - movie_name: "The Matrix"
+      - action: action_ask_movie_subtitles
+      - action: utter_ask_another_question
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # Cinema hall flows
+  - story: ask about cinema hall information
+    steps:
+      - intent: ask_cinema_hall_info
+        entities:
+          - cinema_hall: "City Cinema"
+      - slot_was_set:
+          - cinema_hall: "City Cinema"
+      - action: action_ask_cinema_hall_info
+      - action: utter_ask_another_question
+      - intent: affirm
+
+  - story: ask about cinema hall movies
+    steps:
+      - intent: ask_cinema_hall_movies
+        entities:
+          - cinema_hall: "Star Theater"
+      - slot_was_set:
+          - cinema_hall: "Star Theater"
+      - action: action_ask_cinema_hall_movies
+      - action: utter_ask_another_question
+      - intent: deny
+      - action: utter_goodbye
+
+  - story: ask about cinema hall facilities
+    steps:
+      - intent: ask_cinema_hall_facilities
+        entities:
+          - cinema_hall: "Movie Palace"
+      - slot_was_set:
+          - cinema_hall: "Movie Palace"
+      - action: action_ask_cinema_hall_facilities
+      - action: utter_ask_another_question
+      - intent: ask_cinema_hall_movies
+      - action: action_ask_cinema_hall_movies
+      - action: utter_ask_another_question
+
+  # Multiple questions flows
+  - story: ask genre, duration, and streaming
+    steps:
+      - intent: ask_movie_genre
+        entities:
+          - movie_name: "The Matrix"
+      - slot_was_set:
+          - movie_name: "The Matrix"
+      - action: action_ask_movie_genre
+      - action: utter_ask_another_question
+      - intent: ask_movie_duration
+        entities:
+          - movie_name: "The Matrix"
+      - slot_was_set:
+          - movie_name: "The Matrix"
+      - action: action_ask_movie_duration
+      - action: utter_ask_another_question
+      - intent: ask_streaming_platform
+        entities:
+          - movie_name: "The Matrix"
+      - slot_was_set:
+          - movie_name: "The Matrix"
+      - action: action_ask_streaming_platform
+      - action: utter_ask_another_question
+
+  - story: ask cast, director, and rating
+    steps:
+      - intent: ask_movie_cast
+        entities:
+          - movie_name: "Interstellar"
+      - slot_was_set:
+          - movie_name: "Interstellar"
+      - action: action_ask_movie_cast
+      - action: utter_ask_another_question
+      - intent: ask_movie_director
+        entities:
+          - movie_name: "Interstellar"
+      - slot_was_set:
+          - movie_name: "Interstellar"
+      - action: action_ask_movie_director
+      - action: utter_ask_another_question
+      - intent: ask_movie_rating
+        entities:
+          - movie_name: "Interstellar"
+      - slot_was_set:
+          - movie_name: "Interstellar"
+      - action: action_ask_movie_rating
+      - action: utter_ask_another_question
+
+  # Family and kids flows
+  - story: ask for kid movies and check if movie suitable
+    steps:
+      - intent: ask_kid_friendly_movies
+      - action: action_ask_kid_friendly_movies
+      - action: utter_ask_another_question
+      - intent: ask_movie_suitable
+        entities:
+          - movie_name: "Frozen"
+      - slot_was_set:
+          - movie_name: "Frozen"
+      - action: action_ask_movie_suitable
+      - action: utter_ask_another_question
+
+  # Recommendation flows
+  - story: ask for current movies then top rated
+    steps:
+      - intent: ask_current_movies
+        entities:
+          - location: "City Cinema"
+      - action: action_ask_current_movies
+      - action: utter_ask_another_question
+      - intent: ask_top_rated_movies
+        entities:
+          - genre: "action"
+      - slot_was_set:
+          - genre: "action"
+      - action: action_ask_top_rated_movies
       - action: utter_ask_another_question
 
   # Scenario: Asking for movie genre
@@ -117,7 +268,7 @@ stories:
           - location
       - slot_was_set:
           - movie_name
-      - action: action_ask_ticket_price
+      - action: action_ask_movie_price
       - action: utter_ask_another_question
 
   # Scenario: Asking for movie duration
@@ -260,52 +411,16 @@ stories:
       - action: action_ask_movie_festivals
       - action: utter_ask_another_question
 
-  # Scenario: Asking for movie summary
-  - story: ask for movie summary
+  # Scenario: Asking for movie description
+  - story: ask for movie description
     steps:
-      - intent: ask_movie_summary
+      - intent: ask_movie_description
         entities:
           - movie_name
       - slot_was_set:
           - movie_name
-      - action: action_ask_movie_summary
+      - action: action_ask_movie_description
       - action: utter_ask_another_question
-
-  # Scenario: Asking for kid-friendly movies
-  - story: ask for kid friendly movies
-    steps:
-      - intent: ask_kid_friendly_movies
-      - action: action_ask_kid_friendly_movies
-      - action: utter_ask_another_question
-
-  # Scenario: Asking for streaming platform
-  - story: ask for streaming platform
-    steps:
-      - intent: ask_streaming_platform
-        entities:
-          - movie_name
-      - slot_was_set:
-          - movie_name
-      - action: action_ask_streaming_platform
-      - action: utter_ask_another_question
-
-  # Scenario: Asking for 3D availability
-  - story: ask for 3D availability
-    steps:
-      - intent: ask_3d_availability
-        entities:
-          - movie_name
-      - slot_was_set:
-          - movie_name
-      - action: action_ask_3d_availability
-      - action: utter_ask_another_question
-
-  # # Scenario: Handling fallback
-  # - story: handle fallback
-  #   steps:
-  #     - intent: fallback
-  #     - action: utter_fallback
-  #     - action: utter_ask_another_question
 
   # Scenario: Handling affirm
   - story: handle affirm
@@ -321,13 +436,6 @@ stories:
       - action: action_deny
       - action: utter_ask_another_question
 
-  # # Scenario: Handling bot challenge
-  # - story: handle bot challenge
-  #   steps:
-  #     - intent: bot_challenge
-  #     - action: utter_iamabot
-  #     - action: utter_ask_another_question
-
   # Scenario: Saying goodbye
   - story: say goodbye
     steps:
@@ -338,213 +446,3 @@ stories:
     steps:
       - intent: help
       - action: utter_help
-      - action: utter_ask_another_question
-
-  # - story: ask cast then rating
-  #   steps:
-  #     - intent: ask_movie_cast
-  #       entities:
-  #         - movie_name
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_movie_cast
-  #     - intent: ask_movie_rating
-  #       entities:
-  #         - movie_name
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_movie_rating
-  #     - action: utter_ask_another_question
-
-  # - story: ask duration then subtitles
-  #   steps:
-  #     - intent: ask_movie_duration
-  #       entities:
-  #         - movie_name
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_movie_duration
-  #     - intent: ask_movie_subtitles
-  #       entities:
-  #         - movie_name
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_movie_subtitles
-  #     - action: utter_ask_another_question
-
-  # - story: ask genre recommendation then top rated
-  #   steps:
-  #     - intent: ask_genre_recommendation
-  #       entities:
-  #         - genre
-  #     - slot_was_set:
-  #         - genre
-  #     - action: action_ask_genre_recommendation
-  #     - intent: ask_top_rated_movies
-  #       entities:
-  #         - genre
-  #     - slot_was_set:
-  #         - genre
-  #     - action: action_ask_top_rated_movies
-  #     - action: utter_ask_another_question
-
-  # - story: ask availability then ticket price
-  #   steps:
-  #     - intent: ask_movie_availability
-  #       entities:
-  #         - movie_name
-  #         - location
-  #         - date
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_movie_availability
-  #     - intent: ask_ticket_price
-  #       entities:
-  #         - movie_name
-  #         - location
-  #         - time
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_ticket_price
-  #     - action: utter_ask_another_question
-      
-  # - story: greet then ask for rating and cast
-  #   steps:
-  #     - intent: greet
-  #     - action: utter_greet
-  #     - intent: ask_movie_rating
-  #       entities:
-  #         - movie_name
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_movie_rating
-  #     - intent: ask_movie_cast
-  #       entities:
-  #         - movie_name
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_movie_cast
-  #     - action: utter_ask_another_question
-
-  # - story: ask duration then subtitles then goodbye
-  #   steps:
-  #     - intent: ask_movie_duration
-  #       entities:
-  #         - movie_name
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_movie_duration
-  #     - intent: ask_movie_subtitles
-  #       entities:
-  #         - movie_name
-  #     - slot_was_set:
-  #         - movie_name
-  #     - action: action_ask_movie_subtitles
-  #     - intent: goodbye
-  #     - action: utter_goodbye
-
-  # - story: ask for current movies then top rated
-  #   steps:
-  #     - intent: ask_current_movies
-  #       entities:
-  #         - location
-  #     - action: action_ask_current_movies
-  #     - intent: ask_top_rated_movies
-  #       entities:
-  #         - genre
-  #     - slot_was_set:
-  #         - genre
-  #     - action: action_ask_top_rated_movies
-  #     - action: utter_ask_another_question
-
-  # - story: ask for kid movies and check if movie suitable
-  #   steps:
-  #     - intent: ask_kid_friendly_movies
-  #     - action: action_ask_kid_friendly_movies
-
-  #     - intent: ask_movie_suitable
-  #       entities:
-  #         - movie_name: "Deadpool"
-  #     - slot_was_set:
-  #         - movie_name: "Deadpool"
-  #     - action: action_ask_movie_suitable
-
-  #     - action: utter_ask_another_question
-
-  # - story: ask genre, duration, and streaming
-  #   steps:
-  #     - intent: ask_movie_genre
-  #       entities:
-  #         - movie_name: "The Matrix"
-  #     - slot_was_set:
-  #         - movie_name: "The Matrix"
-  #     - action: action_ask_movie_genre
-
-  #     - intent: ask_movie_duration
-  #       entities:
-  #         - movie_name: "The Matrix"
-  #     - slot_was_set:
-  #         - movie_name: "The Matrix"
-  #     - action: action_ask_movie_duration
-
-  #     - intent: ask_streaming_platform
-  #       entities:
-  #         - movie_name: "The Matrix"
-  #     - slot_was_set:
-  #         - movie_name: "The Matrix"
-  #     - action: action_ask_streaming_platform
-
-  #     - action: utter_ask_another_question
-
-  # - story: ask cast, director, and rating
-  #   steps:
-  #     - intent: ask_movie_cast
-  #       entities:
-  #         - movie_name: "Interstellar"
-  #     - slot_was_set:
-  #         - movie_name: "Interstellar"
-  #     - action: action_ask_movie_cast
-
-  #     - intent: ask_movie_director
-  #       entities:
-  #         - movie_name: "Interstellar"
-  #     - slot_was_set:
-  #         - movie_name: "Interstellar"
-  #     - action: action_ask_movie_director
-
-  #     - intent: ask_movie_rating
-  #       entities:
-  #         - movie_name: "Interstellar"
-  #     - slot_was_set:
-  #         - movie_name: "Interstellar"
-  #     - action: action_ask_movie_rating
-
-  #     - action: utter_ask_another_question
-
-  # - story: ask multiple movie details
-  #   steps:
-  #     - intent: greet
-  #     - action: action_greet
-
-  #     - intent: ask_movie_cast
-  #       entities:
-  #         - movie_name: "Inception"
-  #     - slot_was_set:
-  #         - movie_name: "Inception"
-  #     - action: action_ask_movie_cast
-
-  #     - intent: ask_movie_director
-  #       entities:
-  #         - movie_name: "Inception"
-  #     - slot_was_set:
-  #         - movie_name: "Inception"
-  #     - action: action_ask_movie_director
-
-  #     - intent: ask_movie_rating
-  #       entities:
-  #         - movie_name: "Inception"
-  #     - slot_was_set:
-  #         - movie_name: "Inception"
-  #     - action: action_ask_movie_rating
-
-  #     - action: utter_ask_another_question

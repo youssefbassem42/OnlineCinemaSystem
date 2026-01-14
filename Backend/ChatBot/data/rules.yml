@@ -1,12 +1,19 @@
 version: "3.1"
 
 rules:
-  - rule: Say greeting when user greets
+  # Basic conversation rules
+  - rule: Respond to Assalamu Alaikum greeting
+    steps:
+      - intent: greet_salam
+      - action: utter_greet_salam
+      - action: utter_what_help
+
+  - rule: Respond to general greetings
     steps:
       - intent: greet
       - action: utter_greet
 
-  - rule: Say goodbye when user says goodbye
+  - rule: Say goodbye anytime the user says goodbye
     steps:
       - intent: goodbye
       - action: utter_goodbye
@@ -16,11 +23,17 @@ rules:
       - intent: bot_challenge
       - action: utter_iamabot
 
+  - rule: Ask for help
+    steps:
+      - intent: help
+      - action: utter_help
+
   - rule: Activate fallback
     steps:
       - intent: fallback
       - action: utter_fallback
 
+  # Movie information rules
   - rule: Ask about movie showtimes
     steps:
       - intent: ask_movie_showtimes
@@ -51,6 +64,7 @@ rules:
       - action: action_ask_movie_genre
       - action: utter_ask_another_question
 
+  # Location and availability rules
   - rule: Ask for movie location if movie name not provided
     condition:
       - slot_was_set:
@@ -68,12 +82,26 @@ rules:
       - action: action_ask_movie_location
       - action: utter_ask_another_question
 
+  # Ticket and booking rules
   - rule: Ask about ticket validity
     steps:
       - intent: ask_ticket_validity
       - action: action_ask_ticket_validity
       - action: utter_ask_another_question
 
+  - rule: Ask about ticket price
+    steps:
+      - intent: ask_ticket_price
+      - action: action_ask_movie_price
+      - action: utter_ask_another_question
+
+  - rule: Ask about available seats
+    steps:
+      - intent: ask_movie_seats
+      - action: action_ask_movie_seats
+      - action: utter_ask_another_question
+
+  # Movie details rules
   - rule: Ask about movie info
     steps:
       - intent: ask_movie_info
@@ -84,12 +112,6 @@ rules:
     steps:
       - intent: ask_release_date
       - action: action_ask_release_date
-      - action: utter_ask_another_question
-
-  - rule: Ask about ticket price
-    steps:
-      - intent: ask_ticket_price
-      - action: action_ask_ticket_price
       - action: utter_ask_another_question
 
   - rule: Ask about movie duration
@@ -104,6 +126,7 @@ rules:
       - action: action_ask_movie_availability
       - action: utter_ask_another_question
 
+  # Language and subtitles rules
   - rule: Ask about movie language
     steps:
       - intent: ask_movie_language
@@ -116,12 +139,7 @@ rules:
       - action: action_ask_movie_subtitles
       - action: utter_ask_another_question
 
-  - rule: Ask about movie suitability
-    steps:
-      - intent: ask_movie_suitable
-      - action: action_ask_movie_suitable
-      - action: utter_ask_another_question
-
+  # Recommendation rules
   - rule: Ask for genre if not provided
     condition:
       - slot_was_set:
@@ -145,10 +163,36 @@ rules:
       - action: action_ask_genre_recommendation
       - action: utter_ask_another_question
 
+  # Family and kids rules
   - rule: Ask for family-friendly movies
     steps:
       - intent: ask_family_friendly
       - action: action_ask_family_friendly
+      - action: utter_ask_another_question
+
+  - rule: Ask for kid-friendly movies
+    steps:
+      - intent: ask_kid_friendly_movies
+      - action: action_ask_kid_friendly_movies
+      - action: utter_ask_another_question
+
+  # Cinema hall rules
+  - rule: Ask about cinema hall info
+    steps:
+      - intent: ask_cinema_hall_info
+      - action: action_ask_cinema_hall_info
+      - action: utter_ask_another_question
+
+  - rule: Ask about cinema hall movies
+    steps:
+      - intent: ask_cinema_hall_movies
+      - action: action_ask_cinema_hall_movies
+      - action: utter_ask_another_question
+
+  - rule: Ask about cinema hall facilities
+    steps:
+      - intent: ask_cinema_hall_facilities
+      - action: action_ask_cinema_hall_facilities
       - action: utter_ask_another_question
 
   - rule: Ask about movie theater availability
@@ -187,18 +231,6 @@ rules:
       - action: action_ask_movie_festivals
       - action: utter_ask_another_question
 
-  - rule: Ask for movie summary
-    steps:
-      - intent: ask_movie_summary
-      - action: action_ask_movie_summary
-      - action: utter_ask_another_question
-
-  - rule: Ask for kid-friendly movies
-    steps:
-      - intent: ask_kid_friendly_movies
-      - action: action_ask_kid_friendly_movies
-      - action: utter_ask_another_question
-
   - rule: Ask about streaming platforms
     steps:
       - intent: ask_streaming_platform
@@ -215,4 +247,28 @@ rules:
     steps:
       - intent: inform_movie_name
       - action: action_ask_movie_location
+      - action: utter_ask_another_question
+
+  - rule: Ask about movie poster
+    steps:
+      - intent: ask_movie_poster
+      - action: action_ask_movie_poster
+      - action: utter_ask_another_question
+
+  - rule: Ask about movie trailer
+    steps:
+      - intent: ask_movie_trailer
+      - action: action_ask_movie_trailer
+      - action: utter_ask_another_question
+
+  - rule: Ask about movie price
+    steps:
+      - intent: ask_movie_price
+      - action: action_ask_movie_price
+      - action: utter_ask_another_question
+
+  - rule: Ask about movie description
+    steps:
+      - intent: ask_movie_description
+      - action: action_ask_movie_description
       - action: utter_ask_another_question

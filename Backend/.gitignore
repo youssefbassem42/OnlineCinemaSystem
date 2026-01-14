@@ -2,3 +2,22 @@ Project/.env
 Steps.txt
 Meeting.txt
 Project WorkFlow.txt
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
+rasa_env/
+Backend/ChatBot/rasa_env/
+
+# Rasa models
+*.tar.gz
+Backend/ChatBot/models/
+
+# Rasa cache
+Backend/ChatBot/.rasa/
+
+# System files
+.DS_Store
+Thumbs.db

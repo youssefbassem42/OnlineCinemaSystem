@@ -2,8 +2,9 @@ version: "3.1"
 
 intents:
   - greet
+  - greet_salam
   - goodbye
-  - ask_help
+  - help
   - affirm
   - deny
   - bot_challenge
@@ -30,10 +31,17 @@ intents:
   - ask_upcoming_releases
   - ask_top_rated_movies
   - ask_movie_festivals
-  - ask_movie_summary
+  - ask_movie_description
   - ask_kid_friendly_movies
   - ask_streaming_platform
   - ask_3d_availability
+  - ask_movie_poster
+  - ask_movie_trailer
+  - ask_movie_seats
+  - ask_movie_price
+  - ask_cinema_hall_info
+  - ask_cinema_hall_movies
+  - ask_cinema_hall_facilities
   - inform_genre
   - inform_movie_name
   - fallback
@@ -44,6 +52,7 @@ entities:
   - location
   - time
   - date
+  - cinema_hall
 
 slots:
   movie_name:
@@ -83,28 +92,61 @@ slots:
       - type: from_entity
         entity: time
   genre:
-      type: text
-      influence_conversation: true
-      mappings:
-        - type: from_entity
-          entity: genre
-        - type: from_intent
-          intent: inform_genre
-          value: genre
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: genre
+      - type: from_intent
+        intent: inform_genre
+        value: genre
+  cinema_hall:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: cinema_hall
 
 responses:
+  utter_greet_salam:
+    - text: "Wa Alaikum Assalam Wa Rahmatullahi Wa Barakatuh! How may I assist you today?"
   utter_greet:
-    - text: "Hello! Welcome to the cinema bot. How can I help you today?"
+    - text: "Hello! How can I help you today?"
+    - text: "Hi there! What can I do for you?"
+    - text: "Hey! What would you like to know about our movies?"
+    - text: "Welcome! How may I assist you?"
+    - text: "Greetings! What brings you here today?"
   utter_goodbye:
     - text: "Goodbye! Have a great day!"
+    - text: "See you later! Thanks for chatting!"
+    - text: "Take care! Come back soon!"
   utter_iamabot:
-    - text: "I’m a bot here to help you with movie info. What’s on your mind?"
+    - text: "I am a movie assistant bot, powered by Rasa. I can help you with movie information and bookings!"
   utter_ask_another_question:
-    - text: "Anything else I can help you with?"
+    - text: "Is there anything else you'd like to know?"
+    - text: "Can I help you with something else?"
+    - text: "Do you have any other questions?"
+  utter_what_help:
+    - text: "What would you like to know about our movies or theaters?"
+    - text: "How can I assist you with your movie experience?"
+    - text: "What information are you looking for?"
   utter_fallback:
-    - text: "Sorry, I didn't understand that. Can you rephrase your question?"
+    - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
+    - text: "I'm not sure I understand. Could you say that differently?"
+    - text: "Could you please rephrase that?"
   utter_help:
-    - text: "I can help you with movie showtimes, cast, ratings, ticket prices, and more. Just ask!"
+    - text: "I can help you with movie information, showtimes, tickets, and more. Just ask me anything about movies!"
+  utter_affirm:
+    - text: "Great!"
+    - text: "Perfect!"
+    - text: "Awesome!"
+  utter_deny:
+    - text: "No problem!"
+    - text: "Alright, no worries!"
+    - text: "That's fine!"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 
 actions:
   - action_greet
@@ -137,7 +179,14 @@ actions:
   - action_ask_upcoming_releases
   - action_ask_top_rated_movies
   - action_ask_movie_festivals
-  - action_ask_movie_summary
+  - action_ask_movie_description
   - action_ask_kid_friendly_movies
   - action_ask_streaming_platform
   - action_ask_3d_availability
+  - action_ask_movie_poster
+  - action_ask_movie_trailer
+  - action_ask_movie_seats
+  - action_ask_movie_price
+  - action_ask_cinema_hall_info
+  - action_ask_cinema_hall_movies
+  - action_ask_cinema_hall_facilities

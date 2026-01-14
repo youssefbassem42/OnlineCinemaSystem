@@ -1,5 +1,5 @@
 version: "3.1"
-
+recipe: default.v1
 language: en
 
 pipeline:
@@ -13,20 +13,31 @@ pipeline:
   min_ngram: 1
   max_ngram: 4
 - name: DIETClassifier
-  epochs: 200
+  epochs: 300
+  constrain_similarities: true
+  entity_recognition: True
+  intent_classification: True
+  evaluate_on_number_of_examples: 100
 - name: EntitySynonymMapper
 - name: ResponseSelector
-  epochs: 100
+  epochs: 150
+  constrain_similarities: true
+  evaluate_on_number_of_examples: 100
 - name: FallbackClassifier
-  threshold: 0.4
-  ambiguity_threshold: 0.1
+  threshold: 0.6
+  ambiguity_threshold: 0.2
 
 policies:
 - name: MemoizationPolicy
+  max_history: 5
 - name: RulePolicy
+  core_fallback_threshold: 0.4
+  core_fallback_action_name: "action_fallback"
+  enable_fallback_prediction: True
 - name: TEDPolicy
   max_history: 10
-  epochs: 100
+  epochs: 200
   constrain_similarities: true
+  model_confidence: softmax
 
 assistant_id: 20250501-185710-brass-putty

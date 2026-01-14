@@ -6,17 +6,29 @@ nlu:
       - action movies
       - action films
       - action
+      - adventure movies
+      - thriller movies
+      - exciting films
+      - blockbuster action
+      - action packed films
   - synonym: comedy
     examples: |
       - comedies
       - funny movies
       - comedy
+      - humorous films
+      - light-hearted movies
+      - entertaining films
+      - comedy shows
+      - laugh out loud movies
   - synonym: anime
     examples: |
       - animated films
       - anime
       - animation
       - cartoons
+      - animated features
+      - animated movies
   - synonym: horror
     examples: |
       - scary movies
@@ -37,6 +49,12 @@ nlu:
       - romantic movies
       - love stories
       - romance
+  - intent: greet_salam
+    examples: |
+      - Assalamu Alaikum
+      - Assalamualaikum
+      - As-salaam-alaikum
+      - Peace be upon you
   - intent: greet
     examples: |
       - Hello
@@ -50,6 +68,9 @@ nlu:
       - Hey there!
       - Good evening
       - Hello there
+      - Greetings
+      - Nice to meet you
+      - How are you?
   - intent: goodbye
     examples: |
       - Goodbye
@@ -84,7 +105,7 @@ nlu:
       - No way
       - Not at all
       - Never
-      - Don’t think so
+      - Don't think so
       - No thanks
   - intent: bot_challenge
     examples: |
@@ -97,8 +118,7 @@ nlu:
       - Are you AI?
       - Are you a real person?
       - Is this automated?
-      - intent: ask_help
-  - intent: ask_help
+  - intent: help
     examples: |
       - What can you do?
       - Help me
@@ -125,6 +145,17 @@ nlu:
       - [The Matrix](movie_name)
       - [Finding Nemo](movie_name)
       - [The Lion King](movie_name)
+      - [TL](movie_name)
+      - [UP](movie_name)
+      - [IT](movie_name)
+      - [ET](movie_name)
+      - [The Siege](movie_name)
+      - [Mufasa: The Lion King](movie_name)
+      - [The Dark Knight](movie_name)
+      - [The Godfather](movie_name)
+      - [The Avengers](movie_name)
+      - [The Batman](movie_name)
+      - [Sinners](movie_name)
       - [movie_name](movie_name)
   - intent: ask_movie_showtimes
     examples: |
@@ -142,6 +173,11 @@ nlu:
       - Showtimes for [Frozen](movie_name) on [Friday](date)?
       - What time is [Titanic](movie_name) at [Star Theater](location)?
       - When can I watch [Interstellar](movie_name) this week?
+      - What's the next showing of [Inception](movie_name)?
+      - Are there any late shows for [Avatar](movie_name)?
+      - Show me morning screenings of [The Batman](movie_name)
+      - Is [Dune](movie_name) playing this evening?
+      - Next available show for [Oppenheimer](movie_name)?
   - intent: ask_movie_cast
     examples: |
       - Who is in the cast?
@@ -154,7 +190,7 @@ nlu:
       - Who's in [Frozen](movie_name)?
       - Who acts in [Interstellar](movie_name)?
       - Cast of [Shrek](movie_name)?
-      - Who’s starring in [Dune](movie_name)?
+      - Who's starring in [Dune](movie_name)?
       - Actors in [The Lion King](movie_name)?
   - intent: ask_movie_director
     examples: |
@@ -167,9 +203,13 @@ nlu:
       - Tell me about the director of [Shrek](movie_name).
       - Who made [Dune](movie_name)?
       - Director of [The Batman](movie_name)?
-      - Who’s behind [Avatar](movie_name)?
+      - Who's behind [Avatar](movie_name)?
       - Who directed [Frozen](movie_name)?
       - Director for [Joker](movie_name)?
+      - Who's the filmmaker behind [Inception](movie_name)?
+      - Tell me who created [The Dark Knight](movie_name)
+      - Which director made [Pulp Fiction](movie_name)?
+      - Who's responsible for directing [The Godfather](movie_name)?
   - intent: ask_movie_rating
     examples: |
       - What is the rating of the movie?
@@ -180,10 +220,19 @@ nlu:
       - Is [The Batman](movie_name) highly rated?
       - What's the IMDb score for [Inception](movie_name)?
       - How good is [Avatar](movie_name)?
-      - What’s the rating for [Frozen](movie_name)?
+      - What's the rating for [Frozen](movie_name)?
       - Is [The Matrix](movie_name) well-rated?
       - Rating for [Oppenheimer](movie_name)?
-      - How’s [Titanic](movie_name) rated?
+      - How's [Titanic](movie_name) rated?
+      - What do critics say about [Inception](movie_name)?
+      - Show me reviews for [The Dark Knight](movie_name)
+      - Is [Pulp Fiction](movie_name) critically acclaimed?
+      - What's the audience score for [The Godfather](movie_name)?
+      - What's the IMDb score for [Despicable Me](movie_name)?
+      - How is [Despicable Me](movie_name) rated?
+      - Rating for [Despicable Me](movie_name)?
+      - What's the score for [Despicable Me](movie_name)?
+      - Is [Despicable Me](movie_name) any good?
   - intent: ask_movie_genre
     examples: |
       - What genre is the movie?
@@ -245,7 +294,7 @@ nlu:
       - Details about [Oppenheimer](movie_name)?
       - Info on [Frozen](movie_name)?
       - Tell me about [The Batman](movie_name).
-      - What’s [Joker](movie_name) about?
+      - What's [Joker](movie_name) about?
   - intent: ask_release_date
     examples: |
       - When was the movie released?
@@ -274,6 +323,17 @@ nlu:
       - Cost of [Oppenheimer](movie_name) tickets?
       - How much for [Shrek](movie_name) at [Star Theater](location)?
       - Ticket cost for [The Matrix](movie_name)?
+      - How much is a ticket for [TL](movie_name)?
+      - What's the price for [TL](movie_name)?
+      - How much does it cost to watch [TL](movie_name)?
+      - Tell me the price of [TL](movie_name) tickets
+      - How much are [TL](movie_name) tickets?
+      - How much for [UP](movie_name)?
+      - Price for [IT](movie_name)?
+      - Cost of [ET](movie_name) tickets?
+      - How much is a ticket for [The Siege](movie_name)?
+      - What's the price for [Mufasa: The Lion King](movie_name)?
+      - Ticket cost for [The Dark Knight](movie_name)?
   - intent: ask_movie_duration
     examples: |
       - How long is the movie?
@@ -311,7 +371,7 @@ nlu:
       - What language is [The Batman](movie_name) available in?
       - Is [Spirited Away](movie_name) in Japanese?
       - Does [Avatar](movie_name) have an English version?
-      - What’s the language of [Shrek](movie_name)?
+      - What's the language of [Shrek](movie_name)?
       - Is [Dune](movie_name) in English?
       - Language options for [Oppenheimer](movie_name)?
       - Is [Frozen](movie_name) dubbed in English?
@@ -354,10 +414,10 @@ nlu:
       - I want to watch a [horror](genre) movie.
       - Recommend an [anime](genre) film for me.
       - Suggest a [drama](genre) movie.
-      - What’s a good [sci-fi](genre) film?
+      - What's a good [sci-fi](genre) film?
       - Any [romance](genre) movies you recommend?
       - Show me [comedy](genre) films.
-      - I’d like an [animation](genre) movie.
+      - I'd like an [animation](genre) movie.
       - Suggest something in [action](genre).
       - Recommend a [cartoon](genre) for kids.
   - intent: ask_family_friendly
@@ -368,7 +428,7 @@ nlu:
       - Suggest a movie we can all watch together.
       - I need something suitable for the whole family.
       - Recommend a movie for kids and parents.
-      - What’s a good movie for family night?
+      - What's a good movie for family night?
       - Suggest a film everyone can enjoy.
       - Family-friendly films like [Frozen](movie_name)?
       - Movies for kids and adults?
@@ -391,35 +451,35 @@ nlu:
       - What do users think of [Inception](movie_name)?
       - User reviews for [The Batman](movie_name)?
       - How do people rate [Dune](movie_name)?
-      - What’s the user rating for [Avatar](movie_name)?
+      - What's the user rating for [Avatar](movie_name)?
       - Are there reviews for [Joker](movie_name)?
       - User feedback on [Oppenheimer](movie_name)?
-      - How’s [Frozen](movie_name) rated by viewers?
+      - How's [Frozen](movie_name) rated by viewers?
       - Audience ratings for [The Matrix](movie_name)?
       - What do people say about [Titanic](movie_name)?
       - User opinions on [Shrek](movie_name)?
   - intent: ask_current_movies
     examples: |
       - What movies are playing now?
-      - What’s showing in theaters today?
+      - What's showing in theaters today?
       - Current movies in [City Cinema](location)?
       - What films are out right now?
       - Any movies playing this week?
       - List current films in theaters.
-      - What’s on at the cinema today?
+      - What's on at the cinema today?
       - Movies showing on [Friday](date)?
-      - What’s playing at [Star Theater](location)?
+      - What's playing at [Star Theater](location)?
       - Current films in theaters?
   - intent: ask_upcoming_releases
     examples: |
       - What movies are coming out soon?
       - Any new releases next month?
-      - What’s upcoming in theaters?
+      - What's upcoming in theaters?
       - Upcoming movies in [2023](date)?
       - What films are releasing soon?
       - Tell me about new movies coming out.
       - Any releases next week?
-      - What’s next in cinemas?
+      - What's next in cinemas?
       - Upcoming films in [City Cinema](location)?
       - New movies coming up?
   - intent: ask_top_rated_movies
@@ -446,16 +506,25 @@ nlu:
       - Movie festivals near me?
       - Any festivals in [2023](date)?
       - Film festivals for [drama](genre)?
-  - intent: ask_movie_summary
+  - intent: ask_movie_description
     examples: |
-      - What’s the summary of [Inception](movie_name)?
-      - Tell me the plot of [The Batman](movie_name).
-      - What’s [Dune](movie_name) about?
-      - Give me a synopsis of [Avatar](movie_name).
+      - What is [movie_name](movie_name) about?
+      - Tell me the plot of [Inception](movie_name)
+      - What's the story of [The Matrix](movie_name)?
+      - Give me a summary of [Oppenheimer](movie_name)
+      - Plot summary for [Avatar](movie_name)
+      - What happens in [Dune](movie_name)?
+      - Describe [The Batman](movie_name) to me
+      - What's the synopsis of [Frozen](movie_name)?
+      - Brief me about [Joker](movie_name)
+      - Story of [Interstellar](movie_name)?
+      - What's the summary of [Inception](movie_name)?
+      - Tell me the plot of [The Batman](movie_name)
+      - What's [Dune](movie_name) about?
+      - Give me a synopsis of [Avatar](movie_name)
       - Storyline of [Joker](movie_name)?
       - What happens in [Oppenheimer](movie_name)?
       - Plot summary for [Frozen](movie_name)?
-      - What’s the story of [The Matrix](movie_name)?
       - Synopsis of [Titanic](movie_name)?
       - Plot of [Shrek](movie_name)?
   - intent: ask_kid_friendly_movies
@@ -502,9 +571,128 @@ nlu:
       - Can you repeat that?
       - That's not clear.
       - What are you talking about?
-      - I’m confused.
+      - I'm confused.
       - Say that again?
-      - What’s that?
-      - I don’t get it.
+      - What's that?
+      - I don't get it.
       - Not sure what you mean.
       - Can you clarify?
+  - intent: ask_movie_poster
+    examples: |
+      - Show me the poster of [movie_name](movie_name)
+      - Can I see the poster for [Inception](movie_name)?
+      - Display the poster of [The Matrix](movie_name)
+      - What does the [Oppenheimer](movie_name) poster look like?
+      - Show poster for [Avatar](movie_name)
+      - I want to see the poster of [Dune](movie_name)
+      - Poster for [The Batman](movie_name)?
+      - Can you show me [Frozen](movie_name)'s poster?
+      - Show me [Interstellar](movie_name)'s poster
+      - Display [Joker](movie_name) poster
+      - Let me see the poster of [Titanic](movie_name)
+      - Show the [Shrek](movie_name) poster
+      - Can you display [Iron Man](movie_name)'s poster?
+      - I'd like to see the poster for [Spider-Man](movie_name)
+      - Show me what [Black Panther](movie_name) looks like
+      - Display [Gladiator](movie_name)'s movie poster
+      - Show me [Damsel](movie_name)'s poster
+      - I want to see [Drawing Closer](movie_name)'s poster
+      - Display the movie poster for [Gladiator](movie_name)
+      - Show me the movie poster of [Damsel](movie_name)
+  - intent: ask_movie_trailer
+    examples: |
+      - Show me the trailer of [movie_name](movie_name)
+      - Can I watch the trailer for [Inception](movie_name)?
+      - Play the [The Matrix](movie_name) trailer
+      - Where can I find the [Oppenheimer](movie_name) trailer?
+      - Show trailer for [Avatar](movie_name)
+      - I want to see the trailer of [Dune](movie_name)
+      - Trailer for [The Batman](movie_name)?
+      - Can you play [Frozen](movie_name)'s trailer?
+      - Link to [Joker](movie_name) trailer?
+  - intent: ask_movie_seats
+    examples: |
+      - How many seats are available for [movie_name](movie_name)?
+      - Are there seats left for [Inception](movie_name)?
+      - Check available seats for [The Matrix](movie_name)
+      - How many seats can I book for [Oppenheimer](movie_name)?
+      - Available seats in [Avatar](movie_name)?
+      - What's the seat availability for [Dune](movie_name)?
+      - Are there any seats left for [The Batman](movie_name)?
+      - Show me available seats for [Frozen](movie_name)
+      - Seat count for [Joker](movie_name)?
+      - How full is [Interstellar](movie_name)?
+      - Available seats for [TL](movie_name)?
+      - How many seats left in [TL](movie_name)?
+      - Seats for [UP](movie_name)?
+      - Any seats in [IT](movie_name)?
+      - Check seats for [ET](movie_name)
+      - How many seats for [The Siege](movie_name)?
+      - Available seats in [Mufasa: The Lion King](movie_name)?
+      - Seats left for [The Dark Knight](movie_name)?
+  - intent: ask_movie_price
+    examples: |
+      - How much is a ticket for [movie_name](movie_name)?
+      - What's the price for [Inception](movie_name)?
+      - Ticket price of [The Matrix](movie_name)
+      - How much does [Oppenheimer](movie_name) cost?
+      - Price for [Avatar](movie_name) tickets?
+      - What's the cost of [Dune](movie_name)?
+      - How much to watch [The Batman](movie_name)?
+      - Ticket cost for [Frozen](movie_name)?
+      - Price of [Joker](movie_name) tickets?
+      - How much will [Interstellar](movie_name) cost me?
+  - intent: ask_cinema_hall_info
+    examples: |
+      - Tell me about [City Cinema](cinema_hall)
+      - What's [Star Theater](cinema_hall) like?
+      - Information about [Movie Palace](cinema_hall)
+      - How many seats does [City Cinema](cinema_hall) have?
+      - What are the facilities at [Star Theater](cinema_hall)?
+      - Is [Movie Palace](cinema_hall) wheelchair accessible?
+      - Does [City Cinema](cinema_hall) have parking?
+      - What's the address of [Star Theater](cinema_hall)?
+      - How do I get to [Movie Palace](cinema_hall)?
+      - Tell me about the screens at [City Cinema](cinema_hall)
+      - What are the amenities at [Star Theater](cinema_hall)?
+      - Is [Movie Palace](cinema_hall) air conditioned?
+      - What's the seating capacity of [City Cinema](cinema_hall)?
+      - Are there any special features at [Star Theater](cinema_hall)?
+      - How many screens does [Movie Palace](cinema_hall) have?
+      - Is [City Cinema](cinema_hall) easily accessible?
+      - What's the location of [Star Theater](cinema_hall)?
+      - Does [Movie Palace](cinema_hall) have premium seating?
+  - intent: ask_cinema_hall_movies
+    examples: |
+      - What movies are playing at [City Cinema](cinema_hall)?
+      - Show me what's on at [Star Theater](cinema_hall)
+      - What's showing at [Movie Palace](cinema_hall)?
+      - What can I watch at [City Cinema](cinema_hall)?
+      - Current movies at [Star Theater](cinema_hall)
+      - Films showing at [Movie Palace](cinema_hall)
+      - What's playing now at [City Cinema](cinema_hall)?
+      - List movies at [Star Theater](cinema_hall)
+      - Today's shows at [Movie Palace](cinema_hall)
+      - What's in theaters at [City Cinema](cinema_hall)?
+      - Which films are screening at [Star Theater](cinema_hall)?
+      - Show me the movie schedule for [Movie Palace](cinema_hall)
+      - What's on the big screen at [City Cinema](cinema_hall)?
+      - Current screenings at [Star Theater](cinema_hall)
+      - Movie lineup at [Movie Palace](cinema_hall)
+  - intent: ask_cinema_hall_facilities
+    examples: |
+      - What facilities does [City Cinema](cinema_hall) have?
+      - Does [Star Theater](cinema_hall) have food and drinks?
+      - Is there parking at [Movie Palace](cinema_hall)?
+      - Does [City Cinema](cinema_hall) have 3D screens?
+      - What food options are at [Star Theater](cinema_hall)?
+      - Is there a VIP section in [Movie Palace](cinema_hall)?
+      - Does [City Cinema](cinema_hall) have IMAX?
+      - Are there restaurants in [Star Theater](cinema_hall)?
+      - What special facilities does [Movie Palace](cinema_hall) offer?
+      - Is there valet parking at [City Cinema](cinema_hall)?
+      - What amenities are available at [Star Theater](cinema_hall)?
+      - Tell me about the comfort features at [Movie Palace](cinema_hall)
+      - Are there premium services at [City Cinema](cinema_hall)?
+      - What makes [Star Theater](cinema_hall) special?
+      - Describe the facilities at [Movie Palace](cinema_hall)
